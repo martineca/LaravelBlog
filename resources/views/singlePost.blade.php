@@ -21,7 +21,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="https://ultimatepcbuild.test/">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="#">Link</a>
@@ -50,13 +50,11 @@
 <div class="container">
   <!-- Content here -->
 
-  <h1> Welcome to Ultimate Pc Builds. </h1>
+  <h1> {{ $post->title}} </h1>
 
-  <p> Here is the list of the latest pc builds that we have: </p>
+  <p> {{$post->content}}</p>
 
-  @foreach ($posts as $post)
-  <li> <a href="post/{{$post->id}}"> {{$post->title }}</a></li>
-  @endforeach
+
 </div>
 
 </body>
