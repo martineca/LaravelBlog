@@ -11,18 +11,7 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/', 'PostsController@index');
 
-	$posts = DB::table('post')->get();
+Route::get('/post/{post}', 'PostsController@show');
 
-
-    return view('index', compact('posts'));
-});
-
-Route::get('/post/{post}', function ($id) {
-
-	$post = DB::table('post')->find($id);
-
-
-    return view('singlePost', compact('post'));
-});
