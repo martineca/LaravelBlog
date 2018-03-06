@@ -12,7 +12,11 @@ class PostsController extends Controller
 
 	public function index() {
 
-		$posts = Post::all(); 
+		//get posts by date -> new one to be on top 
+
+		$posts = Post::latest()->get(); 
+
+
 		return view('index', compact('posts'));
 	}
 
@@ -23,7 +27,6 @@ class PostsController extends Controller
 	}
 
 	public function create(){
-
 
 		return view('admin.addPost');
 	}
