@@ -15,7 +15,7 @@ class RegistrationController extends Controller
 
     {
 
-    	return view('sessions.create');
+    	return view('registration.create');
     	
     }
 
@@ -27,7 +27,7 @@ class RegistrationController extends Controller
 			'name' => 'required',
 
 			'email' => 'required|email',
-			
+
 			'password' => 'required|confirmed'
 		]);
 

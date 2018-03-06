@@ -10,6 +10,14 @@ class PostsController extends Controller
 {
     //Controller to manage the posts request from the view 
 
+
+    public function __construct()
+
+    {
+    	//make sure user is signed in before access some functions in this controller
+    	$this->middleware('auth')->except(['index', 'show']);
+    }
+
 	public function index() {
 
 		//get posts by date -> new one to be on top 
