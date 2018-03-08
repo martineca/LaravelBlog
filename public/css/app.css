@@ -5020,6 +5020,7 @@ tbody.collapse.show {
 
 .card-img-top {
   width: 100%;
+  max-width: 730px;
   border-top-left-radius: calc(0.25rem - 1px);
   border-top-right-radius: calc(0.25rem - 1px);
 }

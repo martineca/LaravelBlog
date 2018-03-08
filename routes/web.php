@@ -23,11 +23,11 @@ Route::get('/admin/addPost', 'PostsController@create');
 
 Route::post('/admin/addPost', 'PostsController@store');
 
-Route::get('/admin/editPost/{post}', 'PostsController@edit')->name('adminManage');
+Route::get('/admin/editPost/{post}', 'PostsController@edit');
 
 Route::post('/admin/editPost', 'PostsController@update');
 
-Route::get('/admin/manage', 'PostsController@manage');
+Route::get('/admin/manage', 'PostsController@manage')->name('adminManage');
 
 Route::get('/admin/delete/{post}', 'PostsController@destroy');
 

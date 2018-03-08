@@ -2,7 +2,7 @@
 
 @section ('content')
 
-<h1> Welcome to Ultimate Pc Builds. </h1>
+<h1> Write a new article </h1>
 
 <form method="POST" action="/admin/addPost" enctype="multipart/form-data">
 	<!-- security field -->
@@ -17,12 +17,14 @@
 	</div>
 
 	<div class="form-group">
-		<button type="submit" class="btn btn-primary">Submit</button>
+		 <label class="d-block" for="articleImage">Article image</label>
+		 <input type="file" name="image" accept="image/*">
 	</div>
 
 	<div class="form-group">
-		 <input type="file" name="image" accept="image/*">
+		<button type="submit" class="btn btn-primary">Submit</button>
 	</div>
+
 
 	@include ('layout.formErrors')
 	

@@ -4,9 +4,12 @@
 <!-- Content here -->
 <!-- Content here -->
 
-<h1> Admin panel: Manage posts </h1>
-
-<p> All active posts: </p>
+<h1> Admin panel: Manage articles </h1>
+@if (count($posts) === 0)
+<p> No articles to manage.. Time to write a new one? </p>
+@else
+<p> All articles: </p>
+@endif
 <hr>
 @foreach ($posts as $post)
 <div class="blog-post">
