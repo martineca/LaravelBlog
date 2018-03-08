@@ -4,7 +4,7 @@
 
 <h1> Welcome to Ultimate Pc Builds. </h1>
 
-<form method="POST" action="/admin/addPost">
+<form method="POST" action="/admin/addPost" enctype="multipart/form-data">
 	<!-- security field -->
 	{{ csrf_field() }}
 	<div class="form-group">
@@ -18,6 +18,10 @@
 
 	<div class="form-group">
 		<button type="submit" class="btn btn-primary">Submit</button>
+	</div>
+
+	<div class="form-group">
+		 <input type="file" name="image" accept="image/*">
 	</div>
 
 	@include ('layout.formErrors')

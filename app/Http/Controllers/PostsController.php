@@ -41,15 +41,32 @@ class PostsController extends Controller
 
 
 
-	public function store() {
+	public function store(Request $request) {
 
 		// form validaiton 
 		$this->validate(request(), [
 
 			'title' => 'required',
 			'content' => 'required',
+			'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
 
 		]);
+		 
+
+
+    $image = $request->file('image');
+
+    $input['imagename'] = time().'.'.$image->getClientOriginalExtension();
+
+    $destinationPath = public_path('/images');
+
+    $image->move($destinationPath, $input['imagename']);
+
+
+    //$this->postImage->add($input);
+
+
+    return back()->with('success','Image Upload successful');
 
 		// create and save a post
 		Post::create([
@@ -64,7 +81,7 @@ class PostsController extends Controller
 
 		// Then redirect to home page
 
-		return redirect('/');
+		//return redirect('/');
 	}
 
 	public function edit($id)
