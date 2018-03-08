@@ -24,34 +24,25 @@ class SessionsController extends Controller
 
     public function store() 
     {
-    	// Form validation 
-
-
 
     	// Attempt to authenticate the user
 
     	if ( !auth()->attempt(request(['email', 'password']))) {
 
- 			return back()->withError([
+    		//if not redirect them back 
+
+ 			return back()->withErrors([
 
  				'message' => 'Something looks wrong! Please check your credentials and try again.'
 
  			]);
     	} else {
+    		//If so, sign them in
+    		// Redirect to the home page
 
     		return redirect()->home();
     	}
-
-
-    	//if not redirect them back 
-
-
-
-    	//If so, sign them in
-
-
-
-    	// Redirect to the home page
+    	
 
     }
 

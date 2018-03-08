@@ -15,6 +15,9 @@
 			<li class="nav-item">
 				<a class="nav-link" href="/admin/addPost">Create Post</a>
 			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="/admin/manage">Manage</a>
+			</li>
 
 			<li class="nav-item">
 				<a class="nav-link disabled" href="#">{{ Auth::user()->name }}</a>
@@ -30,8 +33,8 @@
 
 			@endif
 		</ul>
-		<form class="form-inline my-2 my-lg-0">
-			<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+		<form action="/postSearch/search/" class="form-inline my-2 my-lg-0" method="get">
+			<input class="form-control mr-sm-2" type="text" name="search" placeholder="Search" aria-label="Search">
 			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 		</form>
 	</div>

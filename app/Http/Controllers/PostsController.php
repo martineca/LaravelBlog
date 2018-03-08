@@ -47,13 +47,15 @@ class PostsController extends Controller
 		$this->validate(request(), [
 
 			'title' => 'required',
-			'content' => 'required'
+			'content' => 'required',
+
 		]);
 
 		// create and save a post
 		Post::create([
 			'title' => request('title'),
-			'content' => request('content')
+			'content' => request('content'),
+			'user_id' => auth()->id()
 
 
 		]);
@@ -64,4 +66,49 @@ class PostsController extends Controller
 
 		return redirect('/');
 	}
+
+	public function edit($id)
+    {
+        //show edit form for a already created post
+        $post = Post::find($id);
+		return view('admin.editPost', compact('post'));
+    }
+
+
+	public function update(Request $request)
+    {
+        $post = Post::find($request->get('id'));
+        $post->title = $request->get('title');
+        $post->content = $request->get('content');
+        $post->save();
+
+        return redirect()->home();
+    }
+
+
+    public function manage(){
+
+    	$posts = Post::latest()->get(); 
+
+
+		return view('admin.managePosts', compact('posts'));
+
+    }
+
+    public function destroy($id){
+      
+      $post = Post::find($id);
+
+      $post->delete();
+
+      return redirect()->adminManage();
+
+    }
+
+    public function search(Request $request){
+    	$search = $request->get('search');
+    	$posts = Post::Where('title', 'like', '%' . $search . '%')->get();
+    	return view('searchResult', compact('posts'));
+	    	
+    }
 }
