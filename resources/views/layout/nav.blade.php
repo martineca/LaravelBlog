@@ -28,7 +28,7 @@
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 						<a class="dropdown-item" href="/admin/addPost">Write Article</a>
-						<a class="dropdown-item" href="/admin/manage">Manage Articles</a>
+						<a class="dropdown-item" href="/admin/manage">Admin area</a>
 						<div class="dropdown-divider"></div>
 						<a class="dropdown-item" href="/logout">Logout</a>
 					</div>

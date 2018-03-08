@@ -25,6 +25,17 @@
 
 	<!-- Custom styles for this template -->
 	<link href="/css/clean-blog.css" rel="stylesheet">
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-115456792-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-115456792-1');
+	</script>
+
 </head>
 <body>
 	@include ('layout.nav')
@@ -51,13 +62,13 @@
 </div>
 
 
-    <!-- Footer -->
-    <footer class="py-5 bg-dark">
-      <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; ultimatepcbuilding.com 2018</p>
-      </div>
-      <!-- /.container -->
-    </footer>
+<!-- Footer -->
+<footer class="py-5 bg-dark">
+	<div class="container">
+		<p class="m-0 text-center text-white">Copyright &copy; ultimatepcbuilding.com 2018</p>
+	</div>
+	<!-- /.container -->
+</footer>
 
 </body>
 </html>
