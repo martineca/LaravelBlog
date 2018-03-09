@@ -21,6 +21,8 @@ Route::get('/postSearch/search/', 'PostsController@search');
 
 Route::get('/admin/addPost', 'PostsController@create');
 
+Route::get('/posts/tags/{tag}', 'TagsController@index');
+
 Route::post('/admin/addPost', 'PostsController@store');
 
 Route::post('/post/{post}/comments', 'CommentsController@store');

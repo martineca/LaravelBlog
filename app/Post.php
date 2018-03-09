@@ -26,5 +26,13 @@ class Post extends Model
 
 		return $this->belongsTo(User::class);
 	}
+
+	public function tags()
+	{
+		// link tags to posts
+		// any tag may be applied to many posts
+		return $this->belogsToMany(Tag::class);
+
+	}
     
 }

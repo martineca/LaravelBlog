@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Post;
+use App\Tag;
 
 class PostsController extends Controller
 {
@@ -17,14 +18,14 @@ class PostsController extends Controller
     	//make sure user is signed in before access some functions in this controller
 		$this->middleware(['auth', 'admin'])->except(['index', 'show']);
 
-
 	}
 
 	public function index() {
 
 		//get posts by date -> new one to be on top 
 		$posts = Post::latest()->get(); 
-		return view('index', compact('posts'));
+		$tags = Tag::all();
+		return view('index', compact('posts', 'tags'));
 	}
 
 	public function show($id){
