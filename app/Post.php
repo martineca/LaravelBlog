@@ -6,6 +6,7 @@ namespace App;
 class Post extends Model
 {
 
+
 	public function comments()
 	{
 
@@ -18,6 +19,12 @@ class Post extends Model
 
 		$this->comments()->create(['body' => $body, 'user_id' => $userid]);
 		
+	}
+
+	public function user()
+	{
+
+		return $this->belongsTo(User::class);
 	}
     
 }

@@ -25,6 +25,24 @@
 	@include ('layout.formErrors')
 	
 </form>
+<hr>
+<h1> Comments for this post </h1>
+ <div class="comments">
+  	<ul class="list-group">
+  	@foreach ($post->comments as $comment)
+  		<li class="list-group-item">
+  			<a href="/comment/delete/{{$comment->id}}"> Delete </a>
+  			<strong>
+  			{{$comment->created_at->diffForHumans()}}
+  			</strong>
+        by: <i>{{$comment->user->name}}</i>:
+  			{{$comment->body}}
+
+  		</li>
+
+  	@endforeach
+  	</ul>
+  </div>
 
 
 @endsection

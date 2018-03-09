@@ -41,5 +41,10 @@ Route::get('/logout', 'SessionsController@destroy');
 
 Route::get('/analytics', 'PostsController@analytics');
 
+Route::get('protected', ['middleware' => ['auth', 'admin'], function() {
+    return "this page requires that you be logged in and an Admin";
+}]);
+
+Route::get('/comment/delete/{id}', 'CommentsController@destroy');
 
 

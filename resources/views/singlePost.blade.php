@@ -18,7 +18,7 @@
   			<strong>
   			{{$comment->created_at->diffForHumans()}}
   			</strong>
-
+        by: <i>{{$comment->user->name}}</i>:
   			{{$comment->body}}
 
   		</li>
@@ -29,6 +29,7 @@
   <hr>
   <div class="card">
   	<div class="card-body">
+        @if (Auth::check())
   		<form action="/post/{{ $post->id }}/comments" method="POST">
   			{{ csrf_field() }}
   			<div class="form-group">
@@ -40,6 +41,12 @@
   			</div>
   			@include ('layout.formErrors')
   		</form>
+      
+
+      @else
+
+      <p> To add a new comment please <a href="/login">Log in</a> or <a href="/register">Register</a> first! </p>
+      @endif
   	</div><!-- end of card body -->
 
   </div><!-- end of card -->

@@ -11,7 +11,14 @@ use App\Comment;
 class CommentsController extends Controller
 {
     //add the comment to sql with the associated user
+	public function __construct()
 
+	{
+    	//make sure user is signed in before access some functions in this controller
+		$this->middleware(['auth']);
+
+
+	}
 
     public function store(Post $post){
 
@@ -22,5 +29,15 @@ class CommentsController extends Controller
 
     		   	
        return back();
+    }
+
+    public function destroy($id)
+    {
+    	$comment = Comment::find($id);
+
+		$comment->delete();
+
+		return back();
+
     }
 }

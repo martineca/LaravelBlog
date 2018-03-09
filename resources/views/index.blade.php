@@ -24,7 +24,7 @@
           </div>
           <div class="card-footer text-muted">
             {{$post->created_at->toFormattedDateString() }} by
-            <a href="#">Admin</a>
+            <a href="#">{{$post->user->name}}</a>
           </div>
         </div>
 
@@ -51,7 +51,7 @@
 
   <!-- Search Widget -->
   <div class="card my-4">
-    <h5 class="card-header">Search</h5>
+    <h4 class="card-header">Search</h4>
     <div class="card-body">
       <form action="/postSearch/search/" class="form-inline my-2 my-lg-0" method="get">
         <input class="form-control mr-sm-2" type="text" name="search" placeholder="Search" aria-label="Search">
@@ -62,7 +62,7 @@
 
   <!-- Categories Widget -->
   <div class="card my-4">
-    <h5 class="card-header">Categories</h5>
+    <h4 class="card-header">Categories</h4>
     <div class="card-body">
       <div class="row">
         <div class="col-lg-6">

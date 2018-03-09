@@ -51,8 +51,10 @@
     @foreach ($posts as $post)
       <h2>
         {{$post->title }}
-        <a href='/admin/editPost/{{$post->id}}'> edit </a>
-        <a href='/admin/delete/{{$post->id}}'> delete </a>
+        <a href='/admin/editPost/{{$post->id}}'> <i class="far fa-edit"></i> </a>
+        <a href='/admin/delete/{{$post->id}}'> <i class="fas fa-trash"></i>
+
+ </a>
       </h2>
    
     @endforeach

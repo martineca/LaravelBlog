@@ -15,7 +15,9 @@ class PostsController extends Controller
 
 	{
     	//make sure user is signed in before access some functions in this controller
-		$this->middleware('auth')->except(['index', 'show']);
+		$this->middleware(['auth', 'admin'])->except(['index', 'show']);
+
+
 	}
 
 	public function index() {
