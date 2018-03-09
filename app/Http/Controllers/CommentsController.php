@@ -10,7 +10,7 @@ use App\Comment;
 
 class CommentsController extends Controller
 {
-    //
+    //add the comment to sql with the associated user
 
 
     public function store(Post $post){
@@ -18,7 +18,7 @@ class CommentsController extends Controller
 
     	$this->validate(request(), ['body' => 'required|min:2']);
 
-    	$post->addComment(request('body'));
+    	$post->addComment(request('body'), auth()->id());
 
     		   	
        return back();
