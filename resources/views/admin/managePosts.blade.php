@@ -45,20 +45,34 @@
     @if (count($posts) === 0)
     <p> No articles to manage.. Time to write a new one? </p>
     @else
-    <h1> All articles: <h1>
-    @endif
+    <h1> All articles: </h1>
     <hr>
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col" class="text-center">Edit</th>
+      <th scope="col" class="text-center">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+ 
     @foreach ($posts as $post)
-      <h2>
-        {{$post->title }}
-        <a href='/admin/editPost/{{$post->id}}'> <i class="far fa-edit"></i> </a>
-        <a href='/admin/delete/{{$post->id}}'> <i class="fas fa-trash"></i>
-
- </a>
-      </h2>
+    <tr>
+      <th scope="row">{{$post->id }}</th>
+      <td>{{$post->title }}</td>
+      <td class="text-center"> <a href='/admin/editPost/{{$post->id}}'> <i class="far fa-edit"></i> </a></td>
+      <td class="text-center"><a href='/admin/delete/{{$post->id}}'> <i class="fas fa-trash"></i></a></td>
+    </tr>  
+     
+  
+      
    
     @endforeach
-
+     </tbody>
+</table>
+ @endif
   </div><!-- end of col-sm-12 -->
 </div><!-- end of row -->
 

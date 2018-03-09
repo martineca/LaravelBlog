@@ -26,23 +26,30 @@
 	
 </form>
 <hr>
-<h1> Comments for this post </h1>
- <div class="comments">
-  	<ul class="list-group">
-  	@foreach ($post->comments as $comment)
-  		<li class="list-group-item">
-  			<a href="/comment/delete/{{$comment->id}}"> Delete </a>
-  			<strong>
-  			{{$comment->created_at->diffForHumans()}}
-  			</strong>
-        by: <i>{{$comment->user->name}}</i>:
-  			{{$comment->body}}
+@if (count($post->comments) != 0)
+	<h2> Comments for this post </h2>
+	<div class="comments">
+		<ul class="list-group">
+			@foreach ($post->comments as $comment)
+			<li class="list-group-item">
+				<a href="/comment/delete/{{$comment->id}}"> Delete </a>
+				<strong>
+					{{$comment->created_at->diffForHumans()}}
+				</strong>
+				by: <i>{{$comment->user->name}}</i>:
+				{{$comment->body}}
 
-  		</li>
+			</li>
 
-  	@endforeach
-  	</ul>
-  </div>
+			@endforeach
+
+		</ul>
+@else 
+	   <p> No comments yet! </p>
+@endif
+</div>
 
 
 @endsection
+<script src='/js/tinymce/tinymce.min.js'></script>
+<script src='/js/tinymce/init.js'></script>

@@ -80,6 +80,29 @@ class PostsController extends Controller
 		return redirect('/');
 	}
 
+
+	public function imageUpload(Request $request){
+
+		// Image upload function to be used from tinymce edtior
+		$this->validate(request(), [	
+			'file' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+		]);
+
+		$image = $request->file('file');
+
+		$filename = 'image_'.time().'_'.$image->hashName();
+
+		$destinationPath = public_path('/images');
+
+		$fullpath = '/images/'.$filename;
+
+		$image->move($destinationPath, $filename);
+
+    	return json_encode(array('location' => $fullpath));
+
+	}
+
+
 	public function edit($id)
 	{
         //show edit form for a already created post

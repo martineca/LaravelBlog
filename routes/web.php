@@ -47,4 +47,7 @@ Route::get('protected', ['middleware' => ['auth', 'admin'], function() {
 
 Route::get('/comment/delete/{id}', 'CommentsController@destroy');
 
+Route::post('/post/add/image', 'PostsController@imageUpload')->name('imageUploader');
+
+
 
