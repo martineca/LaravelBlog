@@ -23,6 +23,8 @@ Route::get('/admin/addPost', 'PostsController@create');
 
 Route::post('/admin/addPost', 'PostsController@store');
 
+Route::post('/post/{post}/comments', 'CommentsController@store');
+
 Route::get('/admin/editPost/{post}', 'PostsController@edit');
 
 Route::post('/admin/editPost', 'PostsController@update');

@@ -26,7 +26,28 @@
   	@endforeach
   	</ul>
   </div>
+  <hr>
+  <div class="card">
+  	<div class="card-body">
+  		<form action="/post/{{ $post->id }}/comments" method="POST">
+  			{{ csrf_field() }}
+  			<div class="form-group">
+  				<textarea name="body" class="form-control">
+  					
 
+  				</textarea>
+
+  			</div>
+
+  			<div class="form-group">
+  				
+  				<button type="submit" class="btn btn-primary"> Add comment </button>
+  			</div>
+
+  		</form>
+  	</div>
+
+  </div>
 
 </div>
 <div class="col-md-4">
@@ -38,7 +59,7 @@
      @foreach ($articles as $article)
         <!-- Blog Post -->
         <span class="d-block"> {{$post->created_at->toFormattedDateString() }}  </span>
-        <a href="post/{{$article -> id }}">{{$article->title}} </a>
+        <a href="/post/{{$article -> id }}">{{$article->title}} </a>
 
         @endforeach
     </div>

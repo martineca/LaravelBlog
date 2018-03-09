@@ -122,4 +122,5 @@ class PostsController extends Controller
 		return view('searchResult', compact('posts'));
 
 	}
+
 }
