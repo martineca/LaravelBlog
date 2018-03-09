@@ -32,24 +32,19 @@
   		<form action="/post/{{ $post->id }}/comments" method="POST">
   			{{ csrf_field() }}
   			<div class="form-group">
-  				<textarea name="body" class="form-control">
-  					
-
-  				</textarea>
+  				<textarea name="body" class="form-control" placeholder="Your comment here..." rows="3"></textarea>
 
   			</div>
-
-  			<div class="form-group">
-  				
+  			<div class="form-group">	
   				<button type="submit" class="btn btn-primary"> Add comment </button>
   			</div>
-
+  			@include ('layout.formErrors')
   		</form>
-  	</div>
+  	</div><!-- end of card body -->
 
-  </div>
+  </div><!-- end of card -->
+</div><!-- end of col-sm-8 -->
 
-</div>
 <div class="col-md-4">
 
   <!-- Search Widget -->
