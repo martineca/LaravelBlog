@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Post;
 use App\Tag;
+use App\post_tag;
 
 class PostsController extends Controller
 {
@@ -37,47 +38,44 @@ class PostsController extends Controller
 
 	public function create(){
 
-		return view('admin.addPost');
+		$tags = Tag::all();
+		return view('admin.addPost', compact('tags'));
 	}
 
 
 
 	public function store(Request $request) {
 
-		// form validaiton 
-		$this->validate(request(), [
+			// form validaiton 
+			$this->validate(request(), [
+				'title' => 'required',
+				'content' => 'required',
+				'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+			]);
+			$image = $request->file('image');
+			$input['imagename'] = time().'.'.$image->getClientOriginalExtension();
+			$destinationPath = public_path('/images');
+			$image->move($destinationPath, $input['imagename']);
 
-			'title' => 'required',
-			'content' => 'required',
-			'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-
-		]);
-
-
-
-		$image = $request->file('image');
-
-		$input['imagename'] = time().'.'.$image->getClientOriginalExtension();
-
-		$destinationPath = public_path('/images');
-
-		$image->move($destinationPath, $input['imagename']);
-
-
-    //$this->postImage->add($input);
-
-
-  		// create and save a post
-		Post::create([
-			'title' => request('title'),
-			'content' => request('content'),
-			'user_id' => auth()->id(),
-			'articleImage' => "/images/{$input['imagename']}"
-
-
-		]);
-
-	//	// Then redirect to home page
+			  // create and save a post
+		    $post =	Post::create([
+				'title' => request('title'),
+				'content' => request('content'),
+				'user_id' => auth()->id(),
+				'articleImage' => "/images/{$input['imagename']}"
+			]);
+		//link the selected tags to this post
+		$selectedTags =  json_decode($request->input('selectedTags'), true);
+		
+		foreach ((array) $selectedTags as $tag) {
+			
+			post_tag::create([
+				'post_id' => $post->id,
+			    'tag_id' => $tag
+				]);
+		}
+		
+		// Then redirect to home page
 		return redirect('/');
 	}
 
@@ -126,9 +124,9 @@ class PostsController extends Controller
 	public function manage(){
 
 		$posts = Post::latest()->get(); 
+		$tags = Tag::all();
 
-
-		return view('admin.managePosts', compact('posts'));
+		return view('admin.managePosts', compact('posts', 'tags'));
 
 	}
 

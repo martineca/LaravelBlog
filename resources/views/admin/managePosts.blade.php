@@ -73,9 +73,63 @@
      </tbody>
 </table>
  @endif
+
+
+
+    <div class="row page-title-row">
+      <div class="col-md-6">
+        <h3>Tags <small>» Listing</small></h3>
+      </div>
+      <div class="col-md-6 text-right">
+        <a href="/tag/addTag" class="btn btn-success btn-md">
+          <i class="fa fa-plus-circle"></i> New Tag
+        </a>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+
+        <table id="tags-table" class="table table-striped table-bordered">
+          <thead>
+          <tr>
+            <th>Name</th>
+            <th></th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          @foreach ($tags as $tag)
+            <tr>
+              <td>{{ $tag->name }}</td>
+              <td>
+                <a href="/admin/tag/{{ $tag->id }}/edit"
+                   class="btn btn-xs btn-info">
+                  <i class="fa fa-edit"></i> Edit
+                </a>
+              </td>
+              <td>
+                <a href="/tag/delete/{{ $tag->id }}"
+                   class="btn btn-xs btn-danger">
+                  <i class="fa fa-edit"></i> delete
+                </a>
+              </td>
+            </tr>
+          @endforeach
+          </tbody>
+        </table>
+      </div>
+    </div>
+
   </div><!-- end of col-sm-12 -->
 </div><!-- end of row -->
 
+  <script>
+    $(function() {
+      $("#tags-table").DataTable({
+      });
+    });
+  </script>
 
 <!-- Step 2: Load the library. -->
 <script>

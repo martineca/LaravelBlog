@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Tag extends Model
 {
     //
-
+    protected $fillable = ['name'];
     public function posts()
 
     {
@@ -20,4 +20,10 @@ class Tag extends Model
     	return 'name';
 
     }
+
+    public function addTag($name){
+
+		$this->tags()->create(['name' => $body]);
+		
+	}
 }

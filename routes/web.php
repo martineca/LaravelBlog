@@ -51,5 +51,8 @@ Route::get('/comment/delete/{id}', 'CommentsController@destroy');
 
 Route::post('/post/add/image', 'PostsController@imageUpload')->name('imageUploader');
 
+Route::get('/tag/delete/{id}', 'TagsController@destroy');
+Route::get('/tag/addTag', 'TagsController@create');
+Route::post('/tag/addTag', 'TagsController@store');
 
 
